@@ -1,1 +1,8 @@
 
+#simple mysql docker compose
+version: '3.8'
+services:
+  sql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: =nisha

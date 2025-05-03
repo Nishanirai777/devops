@@ -6,3 +6,44 @@ services:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: =nisha
+#all
+WARN[0000] /home/nisha/vol/mysq.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+[+] Running 2/2
+ ✔ Container vol-sql-1  Removed                                                                                    1.8s
+ ✔ Network vol_default  Removed                                                                                    0.8s
+nisha@DESKTOP-A6PDNM9:~/vol$ ls
+mysq.yaml
+nisha@DESKTOP-A6PDNM9:~/vol$ cat mysq.yaml
+version: '3.8'
+services:
+  sql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: =nisha
+nisha@DESKTOP-A6PDNM9:~/vol$ cat mysq.yaml
+version: '3.8'
+services:
+  sql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: =nisha
+nisha@DESKTOP-A6PDNM9:~/vol$ nano mysq.yaml
+nisha@DESKTOP-A6PDNM9:~/vol$ cat mysq.yaml
+version: '3.8'
+services:
+  sql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: nisha
+    ports:
+      - "3306:3306"
+nisha@DESKTOP-A6PDNM9:~/vol$ docker compose -f mysq.yaml up -d
+WARN[0000] /home/nisha/vol/mysq.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+[+] Running 2/2
+ ✔ Network vol_default  Created             0.1s
+ ✔ Container vol-sql-1  Started             0.5s
+nisha@DESKTOP-A6PDNM9:~/vol$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                                    NAMES
+481ac75de3fc   mysql:latest   "docker-entrypoint.s…"   11 seconds ago   Up 10 seconds   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp   vol-sql-1
+nisha@DESKTOP-A6PDNM9:~/vol$ ^C
+nisha@DESKTOP-A6PDNM9:~/vol$

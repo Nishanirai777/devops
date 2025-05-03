@@ -1,1 +1,14 @@
 
+version: '3.8'
+services:
+  sql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: nisha
+    ports:
+      - "3306:3306"
+    volumes:
+      - my_sqldata:/var/lib/mysql
+
+volumes:
+  my_sqldata: # volume name
